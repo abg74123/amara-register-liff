@@ -44,6 +44,7 @@ export default {
           text: "สมัครสมาชิกแล้ว",
         },
       ])
+      liff.closeWindow()
     }
   }
 }
