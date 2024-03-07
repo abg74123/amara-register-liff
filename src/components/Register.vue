@@ -2,13 +2,24 @@
   <div v-if="loading">
     LOADING
   </div>
-  <div v-else>
-    <form @submit.prevent="register">
-      <label for="txt_name">ชื่อ</label>
-      <input id="txt_name" v-model="fName" type="text" required>
-      <button type="submit">สมัครสมาชิก</button>
-    </form>
-  </div>
+  <template v-else>
+    <Card>
+      <template #title>สมัครสมาชิก</template>
+      <template #content>
+        <form @submit.prevent="register">
+          <div class="form-group col">
+            <label for="txt_name">ชื่อ <span class="txt-red">*</span></label>
+            <InputText id="txt_name" type="text" v-model="fName" required/>
+          </div>
+          <div class="form-group col">
+            <label for="txt_tel">เบอร์โทร <span class="txt-red">*</span></label>
+            <InputMask id="txt_tel" v-model="tel" mask="9999-999-999" required/>
+          </div>
+          <Button type="submit" severity="info" label="สมัครสมาชิก"/>
+        </form>
+      </template>
+    </Card>
+  </template>
 
 </template>
 
@@ -22,6 +33,7 @@ export default {
   data() {
     return {
       fName: "",
+      tel: "",
       loading: true
     }
   },
@@ -43,7 +55,10 @@ export default {
       liff.sendMessages([
         {
           type: "text",
-          text: this.fName,
+          text: `
+            ชื่อ: ${this.fName} \n
+            เบอร์โทร: ${this.tel}
+          `,
         },
       ])
       liff.closeWindow()
@@ -51,4 +66,24 @@ export default {
   }
 }
 </script>
+
+<style>
+.form-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.form-group.col {
+  flex-direction: column;
+}
+
+.form-group.row {
+  flex-direction: row;
+}
+
+.txt-red {
+  color: red;
+}
+</style>
 
