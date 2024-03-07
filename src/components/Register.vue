@@ -55,9 +55,7 @@ export default {
       liff.sendMessages([
         {
           type: "text",
-          text: `
-            ชื่อ: ${this.fName} \n
-            เบอร์โทร: ${this.tel}
+          text: `ชื่อ: ${this.fName}\nเบอร์โทร: ${this.tel}
           `,
         },
       ])
