@@ -27,7 +27,7 @@ export default {
   },
   mounted() {
     console.log("mount")
-    liff.init({liffId: "2003955937-Vz8gzQXJ", withLoginOnExternalBrowser: true}).then(async () => {
+    liff.init({liffId: "2002778486-rvP5epAq", withLoginOnExternalBrowser: true}).then(async () => {
       if (liff.isLoggedIn()) {
         const profile = await liff.getProfile()
         console.log("profile => ", profile)
