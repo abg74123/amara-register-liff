@@ -59,6 +59,7 @@ export default {
         },
         {
           type: "flex",
+          altText: "This is a Flex Message",
           contents:{
   "type": "bubble",
   "hero": {
