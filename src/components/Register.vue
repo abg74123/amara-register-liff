@@ -4,7 +4,8 @@
   </div>
   <div v-else>
     <form @submit.prevent="register">
-      <input type="text" required>
+      <label for="txt_name">ชื่อ</label>
+      <input id="txt_name" v-model="fName" type="text" required>
       <button type="submit">สมัครสมาชิก</button>
     </form>
   </div>
@@ -20,6 +21,7 @@ export default {
   props: {},
   data() {
     return {
+      fName: "",
       loading: true
     }
   },
@@ -41,7 +43,7 @@ export default {
       liff.sendMessages([
         {
           type: "text",
-          text: "สมัครสมาชิกแล้ว",
+          text: this.fName,
         },
       ])
       liff.closeWindow()
