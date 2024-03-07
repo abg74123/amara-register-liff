@@ -15,12 +15,12 @@
             <label for="txt_tel">เบอร์โทร <span class="txt-red">*</span></label>
             <InputMask id="txt_tel" v-model="tel" mask="999-999-9999" required/>
           </div>
-            <div class="form-group row">
-          <Button type="submit" severity="info" label="สมัครสมาชิก"/>
-            </div>
+          <div class="form-group row">
+            <Button type="submit" severity="info" @click="register('message')" label="สมัครสมาชิก"/>
+            <Button type="submit" severity="info" @click="register('flex')" label="สมัครสมาชิก + Flex Message"/>
+          </div>
         </form>
 
-          <Button type="submit" severity="info" label="สมัครสมาชิก + Flex Message" @click="registerFlex"/>
 
       </template>
     </Card>
@@ -55,151 +55,155 @@ export default {
     })
   },
   methods: {
-    register() {
+    register(type) {
       console.log("register Func")
-      liff.sendMessages([
-        {
-          type: "text",
-          text: `ชื่อ: ${this.fName}\nเบอร์โทร: ${this.tel}`,
-        }
-      ])
-      liff.closeWindow()
-    },
-    registerFlex(){
-         console.log("registerFlex Func")
-      liff.sendMessages([
-        {
-          type: "flex",
-           altText: "This is a Flex Message",
-          contents: {
-  "type": "bubble",
-  "hero": {
-    "type": "image",
-    "url": "https://amara-clinic.com/wp-content/uploads/2024/02/Amara-logo_11zon.webp",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "http://linecorp.com/"
-    }
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "คิวนัดหมายปรึกษา",
-        "weight": "bold",
-        "size": "xl"
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "lg",
-        "spacing": "sm",
-        "contents": [
+      if (type === 'message') {
+        liff.sendMessages([
           {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "text",
-                "text": "ชื่อ",
-                "color": "#AAAAAA",
-                "size": "sm",
-                "flex": 1
-              },
-              {
-                "type": "text",
-                "text": this.fName,
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5,
-                "weight": "bold"
-              }
-            ]
+            type: "text",
+            text: `ชื่อ: ${this.fName}\nเบอร์โทร: ${this.tel}`,
+          }
+        ])
+      } else if (type === 'flex') {
+        liff.sendMessages([
+          {
+            type: "text",
+            text: `ชื่อ: ${this.fName}\nเบอร์โทร: ${this.tel}`,
           },
           {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "text",
-                "text": "เบอร์",
-                "color": "#AAAAAA",
-                "size": "sm",
-                "flex": 1
+            type: "flex",
+            altText: "This is a Flex Message",
+            contents: {
+              "type": "bubble",
+              "hero": {
+                "type": "image",
+                "url": "https://amara-clinic.com/wp-content/uploads/2024/02/Amara-logo_11zon.webp",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "http://linecorp.com/"
+                }
               },
-              {
-                "type": "text",
-                "text": this.tel,
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5,
-                "weight": "bold"
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "คิวนัดหมายปรึกษา",
+                    "weight": "bold",
+                    "size": "xl"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "lg",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "ชื่อ",
+                            "color": "#AAAAAA",
+                            "size": "sm",
+                            "flex": 1
+                          },
+                          {
+                            "type": "text",
+                            "text": this.fName,
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 5,
+                            "weight": "bold"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "เบอร์",
+                            "color": "#AAAAAA",
+                            "size": "sm",
+                            "flex": 1
+                          },
+                          {
+                            "type": "text",
+                            "text": this.tel,
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 5,
+                            "weight": "bold"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "วันที่",
+                        "color": "#AAAAAA",
+                        "size": "sm",
+                        "flex": 1
+                      },
+                      {
+                        "type": "text",
+                        "text": "8 มี.ค. 2567",
+                        "wrap": true,
+                        "color": "#666666",
+                        "size": "sm",
+                        "flex": 5,
+                        "weight": "bold"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "link",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "WEBSITE",
+                      "uri": "https://amara-clinic.com/"
+                    }
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "margin": "sm"
+                  }
+                ],
+                "flex": 0
               }
-            ]
+            }
           }
-        ]
-      },
-      {
-        "type": "box",
-        "layout": "baseline",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "text",
-            "text": "วันที่",
-            "color": "#AAAAAA",
-            "size": "sm",
-            "flex": 1
-          },
-          {
-            "type": "text",
-            "text": "8 มี.ค. 2567",
-            "wrap": true,
-            "color": "#666666",
-            "size": "sm",
-            "flex": 5,
-            "weight": "bold"
-          }
-        ]
+        ])
       }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "sm",
-    "contents": [
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "WEBSITE",
-          "uri": "https://amara-clinic.com/"
-        }
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [],
-        "margin": "sm"
-      }
-    ],
-    "flex": 0
-  }
-}
-        }
-      ])
+
       liff.closeWindow()
     }
   }
