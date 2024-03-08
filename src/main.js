@@ -8,6 +8,8 @@ import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import InputMask from 'primevue/inputmask';
 import Calendar from 'primevue/calendar';
+import RadioButton from 'primevue/radiobutton';
+import Checkbox from 'primevue/checkbox';
 
 import 'primevue/resources/themes/aura-light-green/theme.css'
 
@@ -23,5 +25,9 @@ app.component('InputText', InputText);
 app.component('InputMask', InputMask);
 // eslint-disable-next-line vue/multi-word-component-names
 app.component('Calendar', Calendar);
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('RadioButton', RadioButton);
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('Checkbox', Checkbox);
 
 app.mount('#app')
