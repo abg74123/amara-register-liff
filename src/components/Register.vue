@@ -158,6 +158,7 @@ export default {
       console.log("register Func")
       if (type === 'message') {
         // EX: 8 มี.ค. 2567 16:25น.
+        // * Convert Format Date Time
         const monthNamesThai = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
         const day = ("0" + this.date.getDate()).slice(-2)
         const month = monthNamesThai[this.date.getMonth()]
@@ -166,6 +167,7 @@ export default {
         const minutes = ("0" + this.date.getMinutes()).slice(-2)
         const formatDate = `${day} ${month} ${year} ${hours}:${minutes}น.`
         console.log({formatDate})
+        // * Map Text Message
         const mapService = this.services.reduce((accumulator, currentValue, index) => {
           if (index < this.services.length - 1) {
             return accumulator + currentValue + '\n'
