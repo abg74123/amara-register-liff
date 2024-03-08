@@ -12,24 +12,24 @@
           </div>
           <!--          **Full Name-->
           <!--          <div class="form-group flex flex-col">-->
-          <!--            <label for="txt_name">ชื่อ-นามสกุล <span class="txt_red">*</span></label>-->
+          <!--            <label for="txt_name">ชื่อ-นามสกุล <span class="text-red">*</span></label>-->
           <!--            <InputText class="input_text" placeholder="ชื่อ-นามสกุล" id="txt_name" type="text" v-model="name" required/>-->
           <!--          </div>-->
           <!--          **Phone Number-->
           <!--          <div class="form-group flex flex-col">-->
-          <!--            <label for="txt_tel">เบอร์โทร <span class="txt_red">*</span></label>-->
+          <!--            <label for="txt_tel">เบอร์โทร <span class="text-red">*</span></label>-->
           <!--            <InputMask class="input_text" placeholder="เบอร์โทร" id="txt_tel" v-model="tel" mask="999-999-9999"-->
           <!--                       required/>-->
           <!--          </div>-->
           <!--          **Date Time-->
           <!--          <div class="form-group flex flex-col">-->
-          <!--            <label for="txt_date">วันที่, เวลาที่สะดวก <span class="txt_red">*</span></label>-->
+          <!--            <label for="txt_date">วันที่, เวลาที่สะดวก <span class="text-red">*</span></label>-->
           <!--            <Calendar id="txt_date" :minDate="minDate" placeholder="วันที่, เวลาที่สะดวก" v-model="date" showTime-->
           <!--                      hourFormat="24"/>-->
           <!--          </div>-->
 
           <!--          **Gender-->
-          <p>เพศ <span class="txt_red">*</span></p>
+          <p>เพศ <span class="text-red">*</span></p>
           <div class="form-group flex flex-row">
             <div class="flex align-items-center">
               <RadioButton v-model="gender" inputId="gender1" name="gender" value="ชาย"/>
@@ -53,24 +53,24 @@
           <!--          </div>-->
           <!--          **Age-->
           <div class="form-group flex flex-col">
-            <label for="txt_age">อายุ <span class="txt_red">*</span></label>
+            <label for="txt_age">อายุ <span class="text-red">*</span></label>
             <InputText class="input_text" placeholder="อายุ" id="txt_age" v-model="age"
                        required/>
           </div>
           <!--          **Weight-->
           <div class="form-group flex flex-col">
-            <label for="input_weight">น้ำหนัก <span class="txt_red">*</span></label>
+            <label for="input_weight">น้ำหนัก <span class="text-red">*</span></label>
             <InputText class="input_text" placeholder="น้ำหนัก" id="txt_weight" v-model="weight"
                        required/>
           </div>
           <!--          **Height-->
           <div class="form-group flex flex-col">
-            <label for="txt_height">ส่วนสูง <span class="txt_red">*</span></label>
+            <label for="txt_height">ส่วนสูง <span class="text-red">*</span></label>
             <InputText class="input_text" placeholder="ส่วนสูง" id="txt_height" v-model="height"
                        required/>
           </div>
           <!--          **Service-->
-          <p>บริการที่สนใจ <span class="txt_red">*</span></p>
+          <p>บริการที่สนใจ <span class="text-red">*</span></p>
           <div class="form-group flex  flex-wrap">
             <div v-for="(service1, index) in service_items1" :key="service1" class="flex align-items-center">
               <Checkbox v-model="services" :inputId="'service1_'+index" name="service" :value="service1"/>
@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="form-group flex flex-row">
-            <Button class="btn_submit" type="submit" severity="info" @click="register('message')"
+            <Button class="btn-submit" type="submit" severity="info" @click="register('message')"
                     :disabled="handleValidateForm()" label="สมัครสมาชิก"/>
           </div>
         </form>

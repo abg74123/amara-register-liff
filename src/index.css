@@ -43,7 +43,7 @@ div, #app {
     margin-bottom: 16px;
 }
 
-.txt_red {
+.text-red {
     color: red;
 }
 
@@ -63,7 +63,7 @@ input {
     border: 1px solid #dfdfe8;
 }
 /*Custom Button Class Submit*/
-.btn_submit {
+.btn-submit {
     font-family: 'IBM Plex Sans Thai', sans-serif;
     margin-top: 40px;
     width: 100%;
