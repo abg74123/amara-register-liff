@@ -20,7 +20,7 @@ div, #app {
 }
 
 .flex-grow{
-    flex-grow:1;
+   flex: 1 1 0%;
 }
 .flex-row {
     flex-direction: row;
@@ -59,14 +59,11 @@ div, #app {
 /*Custom Card Full Page*/
 .p-card-body {
     height: 100vh;
+        display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.p-card-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-}
 
 /*Custom Input*/
 input {
