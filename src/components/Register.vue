@@ -38,8 +38,10 @@
           </div>
 
           <div v-if="gender === 'other'" class="flex flex-col flex-grow">
-            <InputText class="input_text" placeholder="โปรดระบุ" v-model="otherGender"
-                       required/>
+            <div class="form-group">
+              <InputText class="input_text" placeholder="โปรดระบุ" v-model="otherGender"
+                         required/>
+            </div>
           </div>
           <!--          Age-->
           <div class="form-group col">
