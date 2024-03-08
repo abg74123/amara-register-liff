@@ -21,11 +21,10 @@
           </div>
           <div class="form-group col">
             <label for="txt_date">วันที่, เวลาที่สะดวก <span class="txt_red">*</span></label>
-            <Calendar id="txt_date" placeholder="วันที่, เวลาที่สะดวก" v-model="date" showTime hourFormat="24"/>
+            <Calendar id="txt_date" :minDate="minDate" placeholder="วันที่, เวลาที่สะดวก" v-model="date" showTime hourFormat="24"/>
           </div>
           <div class="form-group row">
             <Button class="btn_submit" type="submit" severity="info" @click="register('message')" label="สมัครสมาชิก"/>
-            <!--            <Button type="submit" severity="info" @click="register('flex')" label="สมัครสมาชิก + Flex Message"/>-->
           </div>
         </form>
       </template>
@@ -45,13 +44,16 @@ export default {
     return {
       name: "",
       tel: "",
+      minDate: new Date(),
       date: new Date(),
       loading: true
     }
   },
   mounted() {
     console.log("mount")
+    // * Config Line Liff
     liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
+       // ^ Check Line Liff Login ?
       if (liff.isLoggedIn()) {
         const profile = await liff.getProfile()
         console.log("profile => ", profile)
