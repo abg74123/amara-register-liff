@@ -7,6 +7,9 @@
       <template #title >ลงทะเบียนเข้ารับคำปรึกษา</template>
       <template #content>
         <form @submit.prevent="register">
+          <div style="text-align:center;">
+            <img src="../assets/logo.png" alt="">
+          </div>
           <div class="form-group col">
             <label for="txt_name">ชื่อ-นามสกุล <span class="txt-red">*</span></label>
             <InputText class="input_text" placeholder="ชื่อ-นามสกุล" id="txt_name" type="text" v-model="fName" required/>
@@ -240,11 +243,11 @@ export default {
 }
 
 .btn_submit{
-  margin-top:20px;
+  margin-top:40px;
   width:100%;
   background-color:#243e66;
   border-radius:30px;
-  font-size:16px;
+  font-size:18px;
   border:0px;
 }
 </style>
