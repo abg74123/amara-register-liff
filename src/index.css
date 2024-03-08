@@ -19,15 +19,16 @@ div, #app {
     gap: 8px;
 }
 
-.flex-grow{
-   flex: 1 1 0%;
+.flex-grow {
+    flex: 1 1 0%;
 }
+
 .flex-row {
     flex-direction: row;
 }
 
-.flex-wrap{
-        flex-wrap: wrap;
+.flex-wrap {
+    flex-wrap: wrap;
 }
 
 .flex-col {
@@ -58,8 +59,9 @@ div, #app {
 
 /*Custom Card Full Page*/
 .p-card-body {
-    height: 100vh;
-        display: flex;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }

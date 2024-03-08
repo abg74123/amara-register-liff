@@ -47,18 +47,18 @@
             <InputText class="input_text" placeholder="อายุ" id="txt_age" v-model="age"
                        required/>
           </div>
-            <!--          Weight-->
-            <div class="form-group flex-col">
-              <label for="input_weight">น้ำหนัก </label>
-              <InputText class="input_text" placeholder="น้ำหนัก" id="txt_weight" v-model="weight"
-                         required/>
-            </div>
-            <!--          Height-->
-            <div class="form-group flex-col">
-              <label for="txt_height">ส่วนสูง </label>
-              <InputText class="input_text" placeholder="ส่วนสูง" id="txt_height" v-model="height"
-                         required/>
-            </div>
+          <!--          Weight-->
+          <div class="form-group flex-col">
+            <label for="input_weight">น้ำหนัก </label>
+            <InputText class="input_text" placeholder="น้ำหนัก" id="txt_weight" v-model="weight"
+                       required/>
+          </div>
+          <!--          Height-->
+          <div class="form-group flex-col">
+            <label for="txt_height">ส่วนสูง </label>
+            <InputText class="input_text" placeholder="ส่วนสูง" id="txt_height" v-model="height"
+                       required/>
+          </div>
           <!--          Service-->
           <p>บริการที่สนใจ</p>
           <div class="form-group flex-wrap">
