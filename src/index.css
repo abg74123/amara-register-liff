@@ -47,6 +47,7 @@ div, #app {
     color: red;
 }
 
+/* ############### PRIME NG CUSTOM ###############*/
 /*Custom Card Full Page*/
 .p-card-body {
     min-height: 100vh;
@@ -55,15 +56,12 @@ div, #app {
     flex-direction: column;
     justify-content: space-between;
 }
-
-
 /*Custom Input*/
 input {
     height: 40px;
     border-radius: 6px;
     border: 1px solid #dfdfe8;
 }
-
 /*Custom Button Class Submit*/
 .btn_submit {
     font-family: 'IBM Plex Sans Thai', sans-serif;
@@ -74,3 +72,4 @@ input {
     font-size: 18px;
     border: 0px;
 }
+/* ############### PRIME NG CUSTOM ###############*/
