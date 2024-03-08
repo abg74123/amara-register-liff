@@ -135,22 +135,22 @@ export default {
       ],
       minDate: new Date(),
       date: new Date(),
-      loading: false
+      loading: true
     }
   },
   mounted() {
-    // console.log("mount")
-    // // * Config Line Liff
-    // liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
-    //   // ^ Check Line Liff Login ?
-    //   if (liff.isLoggedIn()) {
-    //     const profile = await liff.getProfile()
-    //     console.log("profile => ", profile)
-    //     this.loading = false
-    //   } else {
-    //     liff.login()
-    //   }
-    // })
+    console.log("mount")
+    // * Config Line Liff
+    liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
+      // ^ Check Line Liff Login ?
+      if (liff.isLoggedIn()) {
+        const profile = await liff.getProfile()
+        console.log("profile => ", profile)
+        this.loading = false
+      } else {
+        liff.login()
+      }
+    })
   },
   methods: {
     handleError,
@@ -177,15 +177,15 @@ export default {
         }, '')
         const text = `เพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
         console.log("text => ", text)
-        // liff.sendMessages([
-        //   {
-        //     type: "text",
-        //     text
-        //     // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
-        //   }
-        // ])
+        liff.sendMessages([
+          {
+            type: "text",
+            text
+            // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
+          }
+        ])
       }
-      // liff.closeWindow()
+      liff.closeWindow()
     },
     handleValidateForm() {
       return !(this.services.length && this.gender && this.age && this.weight && this.height)
