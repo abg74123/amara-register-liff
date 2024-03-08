@@ -8,7 +8,7 @@
       <template #content>
         <form @submit.prevent="register">
           <div style="text-align:center;">
-            <img src="../assets/logo.png" alt="">
+            <img style="width:100%;" src="../assets/logo.jpg" alt="ตำแหน่งดูดไขมัน">
           </div>
           <!--          **Full Name-->
           <!--          <div class="form-group flex flex-col">-->
@@ -86,7 +86,7 @@
           </div>
           <div class="form-group flex flex-row">
             <Button class="btn-submit" type="submit" severity="info" @click="register('message')"
-                    :disabled="handleValidateForm()" label="สมัครสมาชิก"/>
+                    :disabled="handleValidateForm()" label="ประเมินค่ารักษา"/>
           </div>
         </form>
       </template>
@@ -135,22 +135,22 @@ export default {
       ],
       minDate: new Date(),
       date: new Date(),
-      loading: true
+      loading: false
     }
   },
   mounted() {
-    console.log("mount")
-    // * Config Line Liff
-    liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
-      // ^ Check Line Liff Login ?
-      if (liff.isLoggedIn()) {
-        const profile = await liff.getProfile()
-        console.log("profile => ", profile)
-        this.loading = false
-      } else {
-        liff.login()
-      }
-    })
+    // console.log("mount")
+    // // * Config Line Liff
+    // liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
+    //   // ^ Check Line Liff Login ?
+    //   if (liff.isLoggedIn()) {
+    //     const profile = await liff.getProfile()
+    //     console.log("profile => ", profile)
+    //     this.loading = false
+    //   } else {
+    //     liff.login()
+    //   }
+    // })
   },
   methods: {
     handleError,
@@ -177,15 +177,15 @@ export default {
         }, '')
         const text = `เพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
         console.log("text => ", text)
-        liff.sendMessages([
-          {
-            type: "text",
-            text
-            // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
-          }
-        ])
+        // liff.sendMessages([
+        //   {
+        //     type: "text",
+        //     text
+        //     // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
+        //   }
+        // ])
       }
-      liff.closeWindow()
+      // liff.closeWindow()
     },
     handleValidateForm() {
       return !(this.services.length && this.gender && this.age && this.weight && this.height)
