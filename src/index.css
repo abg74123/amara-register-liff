@@ -16,7 +16,7 @@ div, #app {
 
 .flex {
     display: flex;
-    gap: 8px;
+    gap: 16px;
 }
 
 .flex-grow {
@@ -40,17 +40,7 @@ div, #app {
 }
 
 .form-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 8px;
-}
-
-.form-group.col {
-    flex-direction: column;
-}
-
-.form-group.row {
-    flex-direction: row;
+    margin-bottom: 16px;
 }
 
 .txt_red {
