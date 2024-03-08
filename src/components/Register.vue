@@ -45,12 +45,12 @@
             </div>
           </div>
 
-<!--          <div v-if="gender === 'other'" class="flex flex-col flex-grow">-->
-<!--            <div class="form-group">-->
-<!--              <InputText class="input_text" placeholder="โปรดระบุ" v-model="otherGender"-->
-<!--                         required/>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div v-if="gender === 'other'" class="flex flex-col flex-grow">-->
+          <!--            <div class="form-group">-->
+          <!--              <InputText class="input_text" placeholder="โปรดระบุ" v-model="otherGender"-->
+          <!--                         required/>-->
+          <!--            </div>-->
+          <!--          </div>-->
           <!--          **Age-->
           <div class="form-group flex flex-col">
             <label for="txt_age">อายุ <span class="txt_red">*</span></label>
@@ -85,7 +85,8 @@
             </div>
           </div>
           <div class="form-group flex flex-row">
-            <Button class="btn_submit" type="submit" severity="info" @click="register('message')" :disabled="handleValidateForm()" label="สมัครสมาชิก"/>
+            <Button class="btn_submit" type="submit" severity="info" @click="register('message')"
+                    :disabled="handleValidateForm()" label="สมัครสมาชิก"/>
           </div>
         </form>
       </template>
@@ -165,9 +166,15 @@ export default {
         const minutes = ("0" + this.date.getMinutes()).slice(-2)
         const formatDate = `${day} ${month} ${year} ${hours}:${minutes}น.`
         console.log({formatDate})
-        const mapService = this.services.reduce((accumulator, currentLine) => (accumulator + currentLine + '\n'), '')
+        const mapService = this.services.reduce((accumulator, currentValue, index) => {
+          if (index < this.services.length - 1) {
+            return accumulator + currentValue + '\n'
+          } else {
+            return accumulator + currentValue;
+          }
+        }, '')
         const text = `เพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
-        console.log("text => ",text)
+        console.log("text => ", text)
         liff.sendMessages([
           {
             type: "text",
@@ -178,7 +185,7 @@ export default {
       }
       liff.closeWindow()
     },
-    handleValidateForm(){
+    handleValidateForm() {
       return !(this.services.length && this.gender && this.age && this.weight && this.height)
     }
   }
