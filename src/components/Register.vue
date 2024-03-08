@@ -92,7 +92,7 @@
 
 <script>
 
-// import liff from "@line/liff";
+import liff from "@line/liff";
 
 export default {
   name: 'RegisterComp',
@@ -129,22 +129,22 @@ export default {
       ],
       minDate: new Date(),
       date: new Date(),
-      loading: false
+      loading: true
     }
   },
   mounted() {
-    // console.log("mount")
-    // // * Config Line Liff
-    // liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
-    //   // ^ Check Line Liff Login ?
-    //   if (liff.isLoggedIn()) {
-    //     const profile = await liff.getProfile()
-    //     console.log("profile => ", profile)
-    //     this.loading = false
-    //   } else {
-    //     liff.login()
-    //   }
-    // })
+    console.log("mount")
+    // * Config Line Liff
+    liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
+      // ^ Check Line Liff Login ?
+      if (liff.isLoggedIn()) {
+        const profile = await liff.getProfile()
+        console.log("profile => ", profile)
+        this.loading = false
+      } else {
+        liff.login()
+      }
+    })
   },
   methods: {
     register(type) {
@@ -165,15 +165,15 @@ export default {
             น้ำหนัก ${this.weight} kg\n
             ส่วนสูง ${this.height} cm\n
             ${mapService}`
-        // liff.sendMessages([
-        //   {
-        //     type: "text",
-        //     text
-        //     // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
-        //   }
-        // ])
+        liff.sendMessages([
+          {
+            type: "text",
+            text
+            // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
+          }
+        ])
       }
-      // liff.closeWindow()
+      liff.closeWindow()
     }
   }
 }
