@@ -2,12 +2,12 @@
 
 
 html, body {
-    margin:0;
+    margin: 0;
 }
 
-div,#app {
-  font-family: 'IBM Plex Sans Thai', sans-serif;
-  color:#243e66;
+div, #app {
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    color: #243e66;
 }
 
 ::placeholder {
@@ -15,48 +15,49 @@ div,#app {
 }
 
 .form-group {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 .form-group.col {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 .form-group.row {
-  flex-direction: row;
+    flex-direction: row;
 }
 
 .txt_red {
-  color: red;
+    color: red;
 }
 
 /*Custom Card Full Page*/
-.p-card-body{
-  height:100vh;
+.p-card-body {
+    height: 100vh;
 }
- .p-card-content{
-       height: 100%;
+
+.p-card-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: end;
 }
 
- /*Custom Input*/
- input{
-    height:40px;
+/*Custom Input*/
+input {
+    height: 40px;
     border-radius: 6px;
     border: 1px solid #dfdfe8;
 }
 
- /*Custom Button Class Submit*/
-.btn_submit{
+/*Custom Button Class Submit*/
+.btn_submit {
     font-family: 'IBM Plex Sans Thai', sans-serif;
-  margin-top:40px;
-  width:100%;
-  background-color:#243e66;
-  border-radius:30px;
-  font-size:18px;
-  border:0px;
+    margin-top: 40px;
+    width: 100%;
+    background-color: #243e66;
+    border-radius: 30px;
+    font-size: 18px;
+    border: 0px;
 }
