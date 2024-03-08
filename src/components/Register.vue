@@ -175,7 +175,7 @@ export default {
             return accumulator + currentValue;
           }
         }, '')
-        const text = `เพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
+        const text = `-ประเมินค่าใช้จ่าย-\nเพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
         console.log("text => ", text)
         liff.sendMessages([
           {
