@@ -1,11 +1,13 @@
 import {createApp} from 'vue'
 import App from './App.vue'
+import './index.css'
 import PrimeVue from 'primevue/config';
 
 import Button from "primevue/button"
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import InputMask from 'primevue/inputmask';
+import Calendar from 'primevue/calendar';
 
 import 'primevue/resources/themes/aura-light-green/theme.css'
 
@@ -19,5 +21,7 @@ app.component('Card', Card);
 app.component('InputText', InputText);
 // eslint-disable-next-line vue/multi-word-component-names
 app.component('InputMask', InputMask);
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('Calendar', Calendar);
 
 app.mount('#app')
