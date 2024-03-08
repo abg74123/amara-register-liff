@@ -160,11 +160,7 @@ export default {
         const formatDate = `${day} ${month} ${year} ${hours}:${minutes}น.`
         console.log({formatDate})
         const mapService = this.services.reduce((accumulator, currentLine) => (accumulator + currentLine + '\n'), '')
-        const text = `เพศ${this.gender === 'other' ? this.otherGender : this.gender}\n
-            อายุ ${this.age} ปี\n
-            น้ำหนัก ${this.weight} kg\n
-            ส่วนสูง ${this.height} cm\n
-            ${mapService}`
+        const text = `เพศ${this.gender === 'other' ? this.otherGender : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
         liff.sendMessages([
           {
             type: "text",
