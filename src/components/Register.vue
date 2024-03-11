@@ -185,7 +185,7 @@ export default {
               // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
             }
           ])
-          alert("success sendMessages => ", e)
+          alert("success sendMessages")
           // liff.closeWindow()
         } catch (e) {
           alert("error sendMessages => ", e)
