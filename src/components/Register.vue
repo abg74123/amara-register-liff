@@ -32,15 +32,15 @@
           <p>เพศ <span class="text-red">*</span></p>
           <div class="form-group flex flex-row">
             <div class="flex align-items-center">
-              <RadioButton v-model="gender" inputId="gender1" name="gender" value="ชาย"/>
+              <RadioButton v-model="gender" inputId="gender1" name="gender" value="ชาย" />
               <label for="gender1" class="ml-2">ชาย</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="gender" inputId="gender2" name="gender" value="หญิง"/>
+              <RadioButton v-model="gender" inputId="gender2" name="gender" value="หญิง" />
               <label for="gender2" class="ml-2">หญิง</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="gender" inputId="gender3" name="gender" value="other"/>
+              <RadioButton v-model="gender" inputId="gender3" name="gender" value="other" />
               <label for="gender3" class="ml-2">อื่นๆ</label>
             </div>
           </div>
@@ -54,39 +54,36 @@
           <!--          **Age-->
           <div class="form-group flex flex-col">
             <label for="txt_age">อายุ <span class="text-red">*</span></label>
-            <InputText class="input_text" placeholder="อายุ" id="txt_age" v-model="age"
-                       required/>
+            <InputText class="input_text" placeholder="อายุ" id="txt_age" v-model="age" required />
           </div>
           <!--          **Weight-->
           <div class="form-group flex flex-col">
             <label for="input_weight">น้ำหนัก <span class="text-red">*</span></label>
-            <InputText class="input_text" placeholder="น้ำหนัก" id="txt_weight" v-model="weight"
-                       required/>
+            <InputText class="input_text" placeholder="น้ำหนัก" id="txt_weight" v-model="weight" required />
           </div>
           <!--          **Height-->
           <div class="form-group flex flex-col">
             <label for="txt_height">ส่วนสูง <span class="text-red">*</span></label>
-            <InputText class="input_text" placeholder="ส่วนสูง" id="txt_height" v-model="height"
-                       required/>
+            <InputText class="input_text" placeholder="ส่วนสูง" id="txt_height" v-model="height" required />
           </div>
           <!--          **Service-->
           <p>บริการที่สนใจ <span class="text-red">*</span></p>
           <div class="form-group flex  flex-wrap">
             <div v-for="(service1, index) in service_items1" :key="service1" class="flex align-items-center">
-              <Checkbox v-model="services" :inputId="'service1_'+index" name="service" :value="service1"/>
-              <label :for="'service1_'+index" class="ml-2"> {{ service1 }} </label>
+              <Checkbox v-model="services" :inputId="'service1_' + index" name="service" :value="service1" />
+              <label :for="'service1_' + index" class="ml-2"> {{ service1 }} </label>
             </div>
           </div>
           <hr>
           <div class="form-group flex flex-wrap">
             <div v-for="(service2, index) in service_items2" :key="service2" class="flex align-items-center">
-              <Checkbox v-model="services" :inputId="'service2_'+index" name="service" :value="service2"/>
-              <label :for="'service2_'+index" class="ml-2"> {{ service2 }} </label>
+              <Checkbox v-model="services" :inputId="'service2_' + index" name="service" :value="service2" />
+              <label :for="'service2_' + index" class="ml-2"> {{ service2 }} </label>
             </div>
           </div>
           <div class="form-group flex flex-row">
             <Button class="btn-submit" type="submit" severity="info" @click="register('message')"
-                    :disabled="handleValidateForm()" label="ประเมินค่ารักษา"/>
+              :disabled="handleValidateForm()" label="ประเมินค่ารักษา" />
           </div>
         </form>
       </template>
@@ -98,7 +95,7 @@
 <script>
 
 import liff from "@line/liff";
-import {handleError} from "vue";
+import { handleError } from "vue";
 
 export default {
   name: 'RegisterComp',
@@ -138,10 +135,11 @@ export default {
       loading: true
     }
   },
-  mounted() {
+  async mounted() {
     console.log("mount")
-    // * Config Line Liff
-    liff.init({liffId: "2004029731-Akgo4Bm9", withLoginOnExternalBrowser: true}).then(async () => {
+    try {
+      // * Config Line Liff
+      await liff.init({ liffId: "2004029731-Akgo4Bm9", withLoginOnExternalBrowser: true })
       // ^ Check Line Liff Login ?
       if (liff.isLoggedIn()) {
         const profile = await liff.getProfile()
@@ -150,11 +148,13 @@ export default {
       } else {
         liff.login()
       }
-    })
+    } catch (e) {
+      alert("error login => ", e)
+    }
   },
   methods: {
     handleError,
-    register(type) {
+    async register(type) {
       console.log("register Func")
       if (type === 'message') {
         // EX: 8 มี.ค. 2567 16:25น.
@@ -166,7 +166,7 @@ export default {
         const hours = ("0" + this.date.getHours()).slice(-2)
         const minutes = ("0" + this.date.getMinutes()).slice(-2)
         const formatDate = `${day} ${month} ${year} ${hours}:${minutes}น.`
-        console.log({formatDate})
+        console.log({ formatDate })
         // * Map Text Message
         const mapService = this.services.reduce((accumulator, currentValue, index) => {
           if (index < this.services.length - 1) {
@@ -177,15 +177,20 @@ export default {
         }, '')
         const text = `-ประเมินค่าใช้จ่าย-\n\nเพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
         console.log("text => ", text)
-        liff.sendMessages([
-          {
-            type: "text",
-            text
-            // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
-          }
-        ])
+        try {
+          await liff.sendMessages([
+            {
+              type: "text",
+              text
+              // text: `ลงทะเบียนเข้ารับคำปรึกษา\nชื่อ: ${this.name}\nเบอร์โทร: ${this.tel}\nวัน-เวลาที่นัด : ${formatDate}`
+            }
+          ])
+          alert("success sendMessages => ", e)
+          // liff.closeWindow()
+        } catch (e) {
+          alert("error sendMessages => ", e)
+        }
       }
-      liff.closeWindow()
     },
     handleValidateForm() {
       return !(this.services.length && this.gender && this.age && this.weight && this.height)
