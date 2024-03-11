@@ -141,7 +141,7 @@ export default {
   mounted() {
     console.log("mount")
     // * Config Line Liff
-    liff.init({liffId: "2003492788-kZQp2v5N", withLoginOnExternalBrowser: true}).then(async () => {
+    liff.init({liffId: "2004029731-Akgo4Bm9", withLoginOnExternalBrowser: true}).then(async () => {
       // ^ Check Line Liff Login ?
       if (liff.isLoggedIn()) {
         const profile = await liff.getProfile()
