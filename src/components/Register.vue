@@ -66,6 +66,11 @@
             <label for="txt_height">ส่วนสูง <span class="text-red">*</span></label>
             <InputText class="input_text" placeholder="ส่วนสูง" id="txt_height" v-model="height" required />
           </div>
+           <!--          **BMI-->
+<!--          <div class="form-group flex flex-col">-->
+<!--            <label for="txt_height">BMI</label>-->
+<!--            <InputText class="input_text" placeholder="BMI" id="txt_height" :value="calBMI()" disabled />-->
+<!--          </div>-->
           <!--          **Service-->
           <p>บริการที่สนใจ <span class="text-red">*</span></p>
           <div class="form-group flex  flex-wrap">
@@ -149,7 +154,7 @@ export default {
         liff.login()
       }
     } catch (e) {
-      alert("error login => ", e)
+      console.log("error login => ", e)
     }
   },
   methods: {
@@ -175,7 +180,8 @@ export default {
             return accumulator + currentValue;
           }
         }, '')
-        const text = `-ประเมินค่าใช้จ่าย-\n\nเพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\n${mapService}`
+
+        const text = `-ประเมินค่าใช้จ่าย-\n\nเพศ${this.gender === 'other' ? 'อื่นๆ' : this.gender}\nอายุ ${this.age} ปี\nน้ำหนัก ${this.weight} kg\nส่วนสูง ${this.height} cm\nBMI ${this.calBMI()} cm\n${mapService}`
         console.log("text => ", text)
         try {
           await liff.sendMessages([
@@ -191,6 +197,12 @@ export default {
           console.log("error sendMessages => ", e)
         }
       }
+    },
+    calBMI(){
+      // (น้ำหนัก^2)/ส่วนสูง
+      const BMI = this.height && this.weight ? Math.pow(+this.weight,2) / +this.height : 0
+      console.log("BMI=> ",BMI)
+      return  BMI.toFixed(1)
     },
     handleValidateForm() {
       return !(this.services.length && this.gender && this.age && this.weight && this.height)
